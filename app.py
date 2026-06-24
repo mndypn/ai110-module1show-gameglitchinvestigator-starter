@@ -36,10 +36,10 @@ def check_guess(guess, secret):
     secret = int(secret)
 
     if guess == secret:
-        return "Win", "Correct! 🎉"
+        return "Win"
     if guess > secret:
-        return "Too High", "Too high! Try a lower number."
-    return "Too Low", "Too low! Try a higher number."
+        return "Too High"
+    return "Too Low"
 
 def update_score(current_score: int, outcome: str, attempt_number: int):
     if outcome == "Win":

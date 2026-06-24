@@ -31,7 +31,9 @@ Document at least 3 bugs you found. Add rows as needed.
 - Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
 
-I used Claude to ask questions about the app and suggestions to fix. An example of a correct AI suggestion was that it 
+I used Claude to ask questions about the app and suggestions to fix. 
+An example of a correct AI suggestion was that it pointed out that secret was being turned into a string, causing incorrect hints, and I verified this by confirming the correct hints after fixing it. 
+An example of an incorrect AI suggestion was that when I asked it to refactor the fixed check_guess function to logic.utils and import to app.py, it would give me different ways of fixing the function on each file.
 
 ---
 
@@ -42,12 +44,17 @@ I used Claude to ask questions about the app and suggestions to fix. An example 
   and what it showed you about your code.
 - Did AI help you design or understand any tests? How?
 
+I considered a bug fixed when the game worked correctly across many rounds and the same issue didn’t reappear after changing difficulty or restarting the app.
+One test I ran was switching difficulties and checking whether the secret number stayed inside the correct range. This showed me that the secret range not updating bug was gone because each difficulty change produced a new valid secret.
+AI helped me understand the code by explaining parts of the logic in plain language, which made it easier to see what each function was supposed to do.
+
 ---
 
 ## 4. What did you learn about Streamlit and state?
 
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
 
+Streamlit reruns your whole script every time you click anything, almost like it’s starting fresh each time. Session state is the place where you save the things you don’t want it to forget, like the secret number or your score.
 ---
 
 ## 5. Looking ahead: your developer habits
@@ -56,3 +63,7 @@ I used Claude to ask questions about the app and suggestions to fix. An example 
   - This could be a testing habit, a prompting strategy, or a way you used Git.
 - What is one thing you would do differently next time you work with AI on a coding task?
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+
+One strategy I want to reuse in future projects is to break up the code into sections when I am debugging.
+One thing I would do differently is to make more commits, since I would often forget to commit.
+This project changed the way I think about AI generated code because I learned that AI needs clear and precise instructions and that you should double check suggestions instead of assuming they are correct.

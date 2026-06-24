@@ -42,10 +42,25 @@ def check_guess(guess, secret):
     secret = int(secret)
 
     if guess == secret:
-        return "Win", "Correct! 🎉"
+        return "Win"
     if guess > secret:
-        return "Too High", "Too high! Try a lower number."
-    return "Too Low", "Too low! Try a higher number."
+        return "Too High"
+    return "Too Low"
+
+
+def attempts_remaining(attempt_limit: int, attempts_used: int):
+    """How many guesses the player has left.
+
+    A fresh game has used 0 attempts, so the player should see the full
+    `attempt_limit` remaining (this is the off-by-one that made Normal show
+    7 left instead of 8).
+    """
+    return attempt_limit - attempts_used
+
+
+def is_out_of_attempts(attempts_used: int, attempt_limit: int):
+    """True once the player has used up all allowed attempts."""
+    return attempts_used >= attempt_limit
 
 
 def update_score(current_score: int, outcome: str, attempt_number: int):
