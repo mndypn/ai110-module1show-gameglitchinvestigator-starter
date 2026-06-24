@@ -26,18 +26,27 @@ It wrote the code, ran away, and now the game is unplayable.
 ## 📝 Document Your Experience
 
 - [ ] Describe the game's purpose.
+It is a number guessing game.
 - [ ] Detail which bugs you found.
+1. Backwards hints: it would say go higher when the secret was lower
+2. Attempt counter starts at 1
+3. Changing difficulty range did not apply to the secret
+4. New game did not allow replay
+5. Difficulty range is not consistent: the hard range was 0-50, which is easier than normal range 0-100
 - [ ] Explain what fixes you applied.
+I fixed bugs 1, 2, 3, and 5 with Claude. I updated the check_guess function to turn inputs into int and return the correct hint. Then, I fixed the bug that turned secret into a str and changed hints depending on the attempt number, causing inconsistent hints. I also updated the attempt counter to start at 0 and the hard difficulty range to 0-500.
+
+
 
 ## 📸 Demo Walkthrough
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. The player selects a difficulty, and the game creates a secret number in the matching range.
+2. The player enters a guess, which the game validates and counts as an attempt.
+3. The game compares the guess to the secret and updates the score accordingly.
+4. If the guess is correct, the player wins and the round ends.
+5. If attempts run out, the player loses and the secret number is revealed.
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 

@@ -1,14 +1,14 @@
 import random
 import streamlit as st
 
-# FIXME: Logic breaks here
+# FIX: changed hard difficulty range
 def get_range_for_difficulty(difficulty: str):
     if difficulty == "Easy":
         return 1, 20
     if difficulty == "Normal":
         return 1, 100
     if difficulty == "Hard":
-        return 1, 50
+        return 1, 500
     return 1, 100
 
 
@@ -30,6 +30,7 @@ def parse_guess(raw: str):
     return True, value, None
 
 # FIXME: Logic breaks here
+# FIX: returns correct hints
 def check_guess(guess, secret):
     guess = int(guess)
     secret = int(secret)
@@ -78,7 +79,7 @@ attempt_limit_map = {
 attempt_limit = attempt_limit_map[difficulty]
 
 low, high = get_range_for_difficulty(difficulty)
-
+# FIX: updates text to match difficulty range
 st.sidebar.caption(f"Range: {low} to {high}")
 st.sidebar.caption(f"Attempts allowed: {attempt_limit}")
 
@@ -88,16 +89,18 @@ if "difficulty" not in st.session_state:
 if "secret" not in st.session_state:
     st.session_state.secret = random.randint(low, high)
 
+# FIXME: Logic breaks here
 # Difficulty changed: regenerate the secret inside the new range and reset the round.
+# Starting attempts fixed
 if st.session_state.difficulty != difficulty:
     st.session_state.difficulty = difficulty
     st.session_state.secret = random.randint(low, high)
-    st.session_state.attempts = 1
+    st.session_state.attempts = 0
     st.session_state.status = "playing"
     st.session_state.history = []
 
 if "attempts" not in st.session_state:
-    st.session_state.attempts = 1
+    st.session_state.attempts = 0
 
 if "score" not in st.session_state:
     st.session_state.score = 0
@@ -149,7 +152,7 @@ if st.session_state.status != "playing":
     st.stop()
 
 # FIXME: Logic breaks here
-# FIX
+# FIX: fixed the bug where secret turns into a string with claude
 if submit:
     st.session_state.attempts += 1
 

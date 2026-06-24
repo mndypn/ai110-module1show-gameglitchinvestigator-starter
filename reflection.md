@@ -31,7 +31,7 @@ Document at least 3 bugs you found. Add rows as needed.
 - Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
 
-
+I used Claude to ask questions about the app and suggestions to fix. An example of a correct AI suggestion was that it 
 
 ---
 
